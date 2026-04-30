@@ -1,0 +1,373 @@
+{
+  "intents": [
+    {
+      "intent": "Account_Login_Issue",
+      "examples": [
+        {
+          "text": "billing"
+        },
+        {
+          "text": "Forgot my password"
+        },
+        {
+          "text": "I can't login"
+        },
+        {
+          "text": "Login problem"
+        },
+        {
+          "text": "Reset my password"
+        },
+        {
+          "text": "Unable to access account"
+        }
+      ],
+      "description": "Helps resolve login or password issues."
+    },
+    {
+      "intent": "Cancel_Order",
+      "examples": [
+        {
+          "text": "Cancel my order"
+        },
+        {
+          "text": "Cancel order now"
+        },
+        {
+          "text": "Can I cancel my purchase"
+        },
+        {
+          "text": "I want to cancel"
+        },
+        {
+          "text": "Stop my order"
+        }
+      ],
+      "description": "Allows users to cancel an order."
+    },
+    {
+      "intent": "Get_Customer_Support",
+      "examples": [
+        {
+          "text": "1. I need customer support"
+        },
+        {
+          "text": "Can you assist me"
+        },
+        {
+          "text": "Help me with my issue"
+        },
+        {
+          "text": "I have a problem"
+        },
+        {
+          "text": "I need help now"
+        }
+      ],
+      "description": "Handles customer support requests, answers common questions, and provides quick helpful solutions."
+    },
+    {
+      "intent": "Refund_Request",
+      "examples": [
+        {
+          "text": "How to get refund"
+        },
+        {
+          "text": "I want a refund"
+        },
+        {
+          "text": "Refund my money"
+        },
+        {
+          "text": "Request refund"
+        },
+        {
+          "text": "When will I get refund"
+        }
+      ],
+      "description": "Assists users with refund requests and process."
+    },
+    {
+      "intent": "Track_Order",
+      "examples": [
+        {
+          "text": "Has my order shipped"
+        },
+        {
+          "text": "Order status please"
+        },
+        {
+          "text": "Track my order"
+        },
+        {
+          "text": "When will my order arrive"
+        },
+        {
+          "text": "Where is my order"
+        }
+      ],
+      "description": "Helps users check the current status and delivery details of their order."
+    }
+  ],
+  "entities": [
+    {
+      "entity": "Customer_Issue",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Account",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Billing",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "GeneralInquiry",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Order",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Technical",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Order_Status",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Cancelled",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Delivered",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "pending",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Returned",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "shipping",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Payment_Method",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "CashOnDelivery",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "CreditCard",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "DebitCard",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "NetBanking",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "UPI",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              },
+              {
+                "text": "Sorry, I didn’t understand. Please say: Billing, Technical, Account, Order, or General Inquiry."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_9_1777531713761",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I see you have a billing issue 💳 Please explain your problem."
+              },
+              {
+                "text": "You're facing a technical issue ⚙️ What is not working?"
+              },
+              {
+                "text": "This is an account issue 🔐 Are you unable to login?"
+              },
+              {
+                "text": "You're asking about an order 📦 Do you want to track or cancel it?"
+              },
+              {
+                "text": "Sure! Ask your question 😊"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1777531708988",
+      "conditions": "@Customer_Issue:Billing && @Customer_Issue:Technical && @Customer_Issue:Account && @Customer_Issue:Order && @Customer_Issue:GeneralInquiry",
+      "dialog_node": "node_1_1777532178874"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Sure! I’m here to help 😊  \nPlease tell me your issue: Billing, Technical, Account, Order, or General Inquiry?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@Customer_Issue",
+      "dialog_node": "node_3_1777531708988",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "folder",
+      "conditions": "@Order_Status",
+      "dialog_node": "node_9_1777531713761",
+      "previous_sibling": "node_3_1777531708988"
+    },
+    {
+      "type": "standard",
+      "parent": "node_1_1777532178874",
+      "dialog_node": "node_9_1777532340027"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Sure 📦 Please provide your order ID to check the status."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1777531713761",
+      "conditions": "#Track_Order",
+      "dialog_node": "node_9_1777538931358"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above",
+      "use_connect_to_support_prompt": "Connect to support",
+      "single_answer_clarification_prompt": "Something else"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "language": "en",
+  "description": "Provides customer support, answers FAQs, automates tasks, and manages scheduling efficiently.",
+  "name": "SmartDesk AI-dialog"
+}
