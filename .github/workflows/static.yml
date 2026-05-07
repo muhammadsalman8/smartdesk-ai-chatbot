@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State Bot AI</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial, sans-serif;
+background:#081c15;
+color:white;
+overflow-x:hidden;
+}
+
+/* Navbar */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+position:absolute;
+width:100%;
+top:0;
+z-index:10;
+}
+
+nav h2{
+font-size:28px;
+color:#ffffff;
+}
+
+.toggle{
+font-size:14px;
+}
+
+/* Hero Section */
+.hero{
+height:100vh;
+
+/* CHANGE IMAGE NAME HERE */
+background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+url('file:///C:/Users/Anshika%20Computer/Downloads/tourism%20of%20India.png');
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero-content h1{
+font-size:70px;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:24px;
+color:#d6d6d6;
+}
+
+/* Bottom section */
+.section{
+padding:60px 20px;
+text-align:center;
+background:#0d2818;
+}
+
+.section h2{
+font-size:38px;
+margin-bottom:20px;
+}
+
+.section p{
+font-size:20px;
+max-width:800px;
+margin:auto;
+line-height:1.6;
+}
+
+/* Chat placeholder */
+.chat-box{
+position:fixed;
+right:25px;
+bottom:25px;
+background:white;
+color:black;
+width:330px;
+height:500px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+overflow:hidden;
+z-index:999;
+}
+
+.chat-header{
+background:#e6e6e6;
+padding:15px;
+font-weight:bold;
+}
+
+.chat-body{
+padding:20px;
+font-size:18px;
+line-height:1.5;
+}
+
+.chat-input{
+position:absolute;
+bottom:0;
+width:100%;
+padding:15px;
+background:#f5f5f5;
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+.hero-content h1{
+font-size:45px;
+}
+
+.hero-content p{
+font-size:18px;
+}
+
+.chat-box{
+width:90%;
+right:5%;
+height:450px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2>State Bot AI 🇮🇳</h2>
+<div class="toggle">Smart Guide</div>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<h1>State Bot AI 🇮🇳</h1>
+<p>Explore Indian states with AI powered chatbot</p>
+</div>
+</section>
+
+<section class="section">
+<h2>Know India Better</h2>
+<p>Ask about capitals, population, tourism, language, culture and famous places of Indian states.</p>
+</section>
+
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "1f17150b-15e6-4acb-9003-dcecc0c935a4", // The ID of this integration.
+    region: "https://integrations.eu-de.assistant.watson.appdomain.cloud", // The region your integration is hosted in.
+    serviceInstanceID: "31e34582-a201-4d93-bf15-2bcd8ab74239", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+
+</body>
+</html>
